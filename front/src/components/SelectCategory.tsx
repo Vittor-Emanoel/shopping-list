@@ -1,3 +1,4 @@
+import { Label } from "./ui/label";
 import {
   Select,
   SelectContent,
@@ -9,11 +10,14 @@ import {
 
 export function SelectCategory() {
   return (
-    <div className="flex flex-col gap-2 w-[168px]">
-      <label className="text-xs text-base-gray_200 leading-3 tracking-tight">
-        Categoria
-      </label>
-      <Select>
+    <div className="flex flex-col gap-2 w-[168px] group">
+      <Label
+        htmlFor="category"
+        className="text-xs text-base-gray_200 leading-3 tracking-tight transition-colors duration-300"
+      >
+        <p>Categoria</p>
+      </Label>
+      <Select name="category">
         <SelectTrigger className="bg-base-gray_500 rounded-md border-base-gray_300 p-3 focus:border-purple">
           <SelectValue
             placeholder="Selecione"
@@ -27,7 +31,7 @@ export function SelectCategory() {
           <SelectGroup>
             <SelectItem
               value="vavdrwrwd"
-              className="border-b border-neutral-800 "
+              className="border-b border-neutral-800 focus:text-purple focus-within:text-purple "
             >
               Frutas
             </SelectItem>

@@ -78,4 +78,7 @@
   .container {
     max-width: 720px;
   }
+  .group:focus-within .transition-colors {
+    color: #7450ac;
+  }
 }
