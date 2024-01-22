@@ -1,10 +1,7 @@
-import { useHomeController } from "../pages/home/useHomeController";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
 export function ItemInput() {
-  const { register } = useHomeController();
-
   return (
     <div className="w-full space-y-2 group ">
       <Label
@@ -18,7 +15,7 @@ export function ItemInput() {
         type="text"
         className="bg-base-gray_500 border-base-gray_300 focus:border-purple px-3 py-2 transition-all duration-300 focus:outline-none"
         id="itemName"
-        {...register("item")}
+        required
       />
     </div>
   );

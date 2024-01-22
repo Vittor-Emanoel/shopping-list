@@ -1,3 +1,4 @@
+// SelectCategory.js
 import { categories } from "../utils/categories";
 import { Label } from "./ui/label";
 import {
@@ -18,7 +19,7 @@ export function SelectCategory() {
       >
         <p>Categoria</p>
       </Label>
-      <Select name="category">
+      <Select name="category" defaultValue="UNI">
         <SelectTrigger className="bg-base-gray_500 rounded-md border-base-gray_300 p-3 focus:border-purple">
           <SelectValue
             placeholder="Selecione"

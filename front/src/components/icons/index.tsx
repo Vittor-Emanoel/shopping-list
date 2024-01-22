@@ -8,5 +8,5 @@ interface CategoryTypeIconProps {
 export function CategoryTypeIcon({ type, color }: CategoryTypeIconProps) {
   const Icon = iconsMap[type];
 
-  return <Icon color={color} />;
+  return <Icon color={color} className="w-4 h-4" />;
 }
