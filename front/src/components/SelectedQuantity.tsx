@@ -1,3 +1,4 @@
+import { useHomeController } from "../pages/home/useHomeController";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import {
@@ -10,6 +11,8 @@ import {
 } from "./ui/select";
 
 export function SelectQuantity() {
+  const { register } = useHomeController();
+
   return (
     <div className="flex flex-col gap-2 max-w-[180px]  group">
       <Label
@@ -26,6 +29,7 @@ export function SelectQuantity() {
             className="w-[88px] max-md:w-[66px] rounded-none bg-base-gray_500 rounded-tl-md rounded-bl-md border-neutral-800"
             min={1}
             max={99}
+            {...register("quantity")}
           />
           <SelectTrigger className="max-md:w-[72px] border-base-gray_300 bg-base-gray_400 rounded-tr-md rounded-br-md ">
             <SelectValue placeholder="Uni" />
