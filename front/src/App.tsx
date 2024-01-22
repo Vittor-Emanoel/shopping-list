@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react";
 import { ItemInput } from "./components/ItemInput";
 import { SelectCategory } from "./components/SelectCategory";
-import { SelectedQuantity } from "./components/SelectedQuantity";
+import { SelectQuantity } from "./components/SelectedQuantity";
 import { Button } from "./components/ui/button";
 import cover from "./imgs/cover.svg";
 
@@ -21,7 +21,7 @@ export function App() {
             <ItemInput />
 
             <div className="flex gap-3 items-end max-w-full">
-              <SelectedQuantity />
+              <SelectQuantity />
               <SelectCategory />
 
               <Button className="w-10 h-10 p-2 bg-purple hover:bg-purpleDark rounded-[999px] justify-center items-center gap-1.5 inline-flex md:mt-0">

@@ -1,3 +1,4 @@
+import { categories } from "../utils/categories";
 import { Label } from "./ui/label";
 import {
   Select,
@@ -29,16 +30,17 @@ export function SelectCategory() {
           className=" text-base-gray_200 bg-base-gray_500 rounded-sm border border-neutral-800 "
         >
           <SelectGroup>
-            <SelectItem
-              value="vavdrwrwd"
-              className="border-b border-neutral-800 focus:text-purple focus-within:text-purple "
-            >
-              Frutas
-            </SelectItem>
-            <SelectItem value="vavdd" className="border-b border-neutral-800 ">
-              Legumes
-            </SelectItem>
-            <SelectItem value="vav">Outros</SelectItem>
+            {categories.map((category) => (
+              <SelectItem
+                key={category.id}
+                value={category.name}
+                className="border-b border-neutral-800 hover:text-white "
+                icon={category.icon}
+                color={category.color}
+              >
+                {category.name}
+              </SelectItem>
+            ))}
           </SelectGroup>
         </SelectContent>
       </Select>

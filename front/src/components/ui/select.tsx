@@ -1,6 +1,7 @@
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import * as React from "react";
+import { CategoryTypeIcon } from "../icons";
 import { cn } from "../utils/cn";
 
 const Select = SelectPrimitive.Root;
@@ -110,25 +111,37 @@ SelectLabel.displayName = SelectPrimitive.Label.displayName;
 
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Item
-    ref={ref}
-    className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      className
-    )}
-    {...props}
-  >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-      <SelectPrimitive.ItemIndicator>
-        <Check className="h-4 w-4" />
-      </SelectPrimitive.ItemIndicator>
-    </span>
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> & {
+    icon?: "Carrot" | "Sandwich" | "Apple" | "Beef" | "Milk";
+    color?: string;
+  }
+>(({ className, icon, color, children, ...props }, ref) => {
+  const iconComponent = icon ? (
+    <CategoryTypeIcon type={icon} color={color} />
+  ) : null;
 
-    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-  </SelectPrimitive.Item>
-));
+  return (
+    <SelectPrimitive.Item
+      ref={ref}
+      className={cn(
+        "relative flex w-full cursor-pointer select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-base-gray_300 ",
+        className
+      )}
+      {...props}
+    >
+      <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+        {iconComponent}
+      </span>
+
+      <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+      <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
+        <SelectPrimitive.ItemIndicator>
+          <Check className="h-3 w-3 text-purple " />
+        </SelectPrimitive.ItemIndicator>
+      </span>
+    </SelectPrimitive.Item>
+  );
+});
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 
 const SelectSeparator = React.forwardRef<
@@ -149,6 +162,7 @@ export {
   SelectGroup,
   SelectItem,
   SelectLabel,
+  SelectPrimitive,
   SelectScrollDownButton,
   SelectScrollUpButton,
   SelectSeparator,
